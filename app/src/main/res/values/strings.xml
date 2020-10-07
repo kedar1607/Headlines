@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Headlines</string>
+    <string name="select_source">Select source of headlines</string>
+    <string name="generic_error">Something went wrong. Please try again!</string>
+    <string name="try_again">Try again</string>
+</resources>

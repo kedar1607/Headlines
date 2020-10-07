@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?attr/selectableItemBackground"
+    android:padding="4dp"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <TextView
+        android:id="@+id/tv_src_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/quantum_black_text"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textAlignment="viewStart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text=" The washintotn post" />
+
+    <TextView
+        android:id="@+id/tv_src_desc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/quantum_grey"
+        android:textSize="12sp"
+        android:textStyle="normal"
+        tools:text="dhsajkhdaksj dhskajdhasjkhd hkdsahdkjsab daskjhdkjsahd hdjsahkdja dhasjkdha hkdasjhdkjsadhskdjhd hdkjsahkjds"
+        app:layout_constraintTop_toBottomOf="@+id/tv_src_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

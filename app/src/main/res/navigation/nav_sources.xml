@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav_sources"
+    app:startDestination="@id/sourcesFragment">
+
+    <fragment
+        android:id="@+id/sourcesFragment"
+        android:name="com.example.headlines.sources.fragments.SourcesFragment"
+        android:label="Sources" />
+
+</navigation>

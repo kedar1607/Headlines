@@ -1,0 +1,235 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'androidx.navigation.safeargs.kotlin'
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.2"
+
+    defaultConfig {
+        applicationId "com.example.headlines"
+        minSdkVersion 17
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    flavorDimensions "app"
+
+    productFlavors{
+        def BASE_URL = "BASE_URL"
+        def API_KEY = "API_KEY"
+
+        local {
+            buildConfigField "String", BASE_URL, "\"https://newsapi.org/v2/\""
+            buildConfigField "String", API_KEY, "\"73b7b66226b64908989447992fd4b03d\""
+        }
+
+        prod {
+            buildConfigField "String", BASE_URL, "\"https://newsapi.org/v2/\""
+            buildConfigField "String", API_KEY, "\"73b7b66226b64908989447992fd4b03d\""
+        }
+    }
+
+    compileOptions{
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    buildFeatures {
+        dataBinding true
+        viewBinding true
+    }
+}
+
+dependencies {
+    implementation "androidx.legacy:legacy-support-v4:$rootProject.legacyVersion"
+    implementation "androidx.annotation:annotation:$rootProject.annotationVersion"
+    implementation "androidx.appcompat:appcompat:$rootProject.appCompatVersion"
+    implementation "androidx.constraintlayout:constraintlayout:$rootProject.constraintLayoutVersion"
+    implementation "androidx.core:core-ktx:$rootProject.ktxVersion"
+    implementation "androidx.fragment:fragment-ktx:$rootProject.fragmentVersion"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$rootProject.lifecycleVersion"
+    implementation "androidx.recyclerview:recyclerview:$rootProject.recyclerViewVersion"
+    implementation "androidx.work:work-runtime-ktx:$rootProject.workVersion"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$rootProject.kotlinVersion"
+    implementation "androidx.fragment:fragment:$rootProject.fragmentVersion"
+    implementation 'androidx.paging:paging-runtime-ktx:2.1.2'
+
+    // viewpager2
+    implementation "androidx.viewpager2:viewpager2:1.0.0"
+
+    // Material
+    implementation "com.google.android.material:material:$rootProject.materialVersion"
+
+    // Lifecycle
+    implementation "androidx.lifecycle:lifecycle-extensions:$rootProject.lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$rootProject.lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$rootProject.lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-common-java8:$rootProject.lifecycleVersion"
+
+    // Navigation
+    implementation "androidx.navigation:navigation-fragment-ktx:$rootProject.navigationVersion"
+    implementation "androidx.navigation:navigation-ui-ktx:$rootProject.navigationVersion"
+
+    implementation "com.iterable:iterableapi:$rootProject.iterable"
+    implementation("com.google.firebase:firebase-messaging:$rootProject.firebaseMessaging") {
+        because "Min version 17.4.0"
+    }
+
+    //Glide
+    kapt "com.github.bumptech.glide:compiler:$rootProject.glideVersion"
+    implementation "com.github.bumptech.glide:glide:$rootProject.glideVersion"
+
+    //Facebook
+    implementation "com.facebook.android:facebook-android-sdk:$rootProject.facebookVersion"
+
+    //Tracking
+    implementation "io.sentry:sentry-android:1.7.30"
+    implementation("org.slf4j:slf4j-nop:1.7.30") {
+        because "Part of sentry installation: https://docs.sentry.io/clients/java/integrations/#installation"
+    }
+
+    // Coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$rootProject.coroutinesVersion"
+
+    //Moshi
+    implementation "com.squareup.moshi:moshi-kotlin:$rootProject.moshiVersion"
+    implementation "com.squareup.moshi:moshi-adapters:$rootProject.moshiVersion"
+    kapt "com.squareup.moshi:moshi-kotlin-codegen:$rootProject.moshiVersion"
+
+    //Retrofit2
+    implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofit2Version"
+    implementation "com.squareup.retrofit2:converter-moshi:$rootProject.retrofit2Version"
+
+    //Analytics
+    implementation 'com.google.firebase:firebase-crashlytics:17.0.1'
+    implementation "com.google.firebase:firebase-analytics-ktx:$rootProject.firebaseAnalyticsVersion"
+
+    // Firebase Config
+    implementation 'com.google.firebase:firebase-config-ktx:19.1.4'
+
+    //maps
+    implementation "com.google.android.gms:play-services-maps:$rootProject.googleVersion"
+
+    //Recaptcha
+    implementation "com.google.android.gms:play-services-safetynet:$rootProject.googleVersion"
+
+    //Okhttp3
+    implementation "com.squareup.okhttp3:okhttp:$rootProject.okhttp3Version"
+    implementation "com.squareup.okhttp3:logging-interceptor:$rootProject.okhttp3Version"
+
+    // Dagger
+    implementation "com.google.dagger:dagger-android:$rootProject.dagger2Version"
+    implementation "com.google.dagger:dagger-android-support:$rootProject.dagger2Version"
+    kapt "com.google.dagger:dagger-compiler:$rootProject.dagger2Version"
+    kapt "com.google.dagger:dagger-android-processor:$rootProject.dagger2Version"
+
+    // Assisted injection for Dagger to support retained VMs.
+    compileOnly 'com.squareup.inject:assisted-inject-annotations-dagger2:0.5.2'
+    kapt 'com.squareup.inject:assisted-inject-processor-dagger2:0.5.2'
+
+    //Google
+    implementation "com.google.android.gms:play-services-safetynet:$rootProject.googleVersion"
+    implementation "com.google.android.gms:play-services-analytics:$rootProject.googleVersion"
+
+    implementation 'androidx.preference:preference:1.1.1'
+
+    implementation "com.mixpanel.android:mixpanel-android:$rootProject.mixpanelVersion"
+    implementation "com.adjust.sdk:adjust-android:4.21.1"
+    implementation "com.android.installreferrer:installreferrer:1.1.2"
+
+    //Charting
+    implementation "com.github.PhilJay:MPAndroidChart:v$rootProject.mpChartVersion"
+
+    //lottie
+    implementation "com.airbnb.android:lottie:$lottieVersion"
+
+    //FlexBox
+    implementation "com.google.android:flexbox:$rootProject.flexBoxVersion"
+
+    //places
+    implementation "com.google.android.libraries.places:places:$rootProject.placesVersion"
+
+    // Time
+    implementation "com.jakewharton.threetenabp:threetenabp:$rootProject.threeTenAbpVersion"
+
+    // Biometrics
+    implementation "androidx.biometric:biometric:$rootProject.biometricVersion"
+
+    // Logging
+    implementation 'com.jakewharton.timber:timber:4.7.1'
+
+    // Memory leak analyzer
+    debugImplementation('com.squareup.leakcanary:leakcanary-android:2.2') {
+        because "LeakCanary should only run in debug builds"
+    }
+
+    // Mapbox
+    implementation 'com.mapbox.mapboxsdk:mapbox-android-sdk:9.0.0'
+    implementation 'com.mapbox.mapboxsdk:mapbox-android-plugin-annotation-v9:0.8.0'
+
+    implementation 'com.android.support:multidex:1.0.3'
+
+    // Autofill
+    implementation "androidx.autofill:autofill:1.0.0"
+
+    // Testing dependencies
+    androidTestImplementation "androidx.arch.core:core-testing:$rootProject.coreTestingVersion"
+    testImplementation "androidx.arch.core:core-testing:$rootProject.coreTestingVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-contrib:$rootProject.espressoVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$rootProject.espressoVersion"
+    androidTestImplementation 'androidx.test:rules:1.2.0'
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestImplementation "androidx.test:core:$rootProject.coreVersion"
+    androidTestImplementation "androidx.test:monitor:1.2.0"
+    androidTestImplementation "androidx.test.ext:junit:$rootProject.testExtJunit"
+    implementation "androidx.test.espresso:espresso-idling-resource:$rootProject.espressoVersion"
+    androidTestImplementation "org.mockito:mockito-android:$rootProject.mockitoVersion"
+    androidTestImplementation 'androidx.test.espresso:espresso-web:3.2.0'
+    androidTestImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$rootProject.nhaarmanVersion"
+
+    // to support nav components in ui testing
+    androidTestImplementation "androidx.navigation:navigation-testing:$rootProject.navigationVersion"
+
+    androidTestUtil 'androidx.test:orchestrator:1.2.0'
+
+    debugImplementation("androidx.fragment:fragment-testing:$rootProject.fragmentVersion") {
+        exclude group: 'androidx.test', module: 'core'
+    }
+
+    kaptAndroidTest "com.google.dagger:dagger-android-processor:$rootProject.dagger2Version"
+    kaptAndroidTest "com.google.dagger:dagger-compiler:$rootProject.dagger2Version"
+    kaptTest "com.google.dagger:dagger-compiler:$rootProject.dagger2Version"
+
+    testImplementation "androidx.test:core:$rootProject.coreVersion"
+    testImplementation "androidx.test.ext:truth:$rootProject.extTruthVersion"
+    testImplementation "androidx.test.ext:junit:$rootProject.testExtJunit"
+    testImplementation "androidx.test.ext:junit-ktx:$rootProject.testExtJunit"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$rootProject.coroutinesVersion"
+    testImplementation "org.robolectric:robolectric:$rootProject.robolectricVersion"
+    testImplementation "androidx.test.espresso:espresso-core:$rootProject.espressoVersion"
+    testImplementation "androidx.test.espresso:espresso-intents:$rootProject.espressoVersion"
+    testImplementation "com.squareup.okhttp3:mockwebserver:$rootProject.okhttp3Version"
+    testImplementation "org.mockito:mockito-core:$rootProject.mockitoVersion"
+    testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$rootProject.nhaarmanVersion"
+    testImplementation('org.json:json:20200518') {
+        because "Separate from the Android SDK dependency to be able to use JSON parsing in unit tests"
+    }
+
+}
