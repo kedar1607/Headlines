@@ -3,6 +3,7 @@ package com.example.headlines.di.app
 import android.content.Context
 import com.example.headlines.application.HeadlinesApplication
 import com.example.headlines.di.app.modules.coroutines.DispatcherModule
+import com.example.headlines.di.app.modules.features.articles.ArticlesActivityModule
 import com.example.headlines.di.app.modules.features.sources.SourcesActivityModule
 import com.example.headlines.di.app.modules.viewmodels.ViewModelFactoryModule
 import com.example.headlines.di.core.CoreComponent
@@ -21,7 +22,8 @@ import dagger.android.AndroidInjector
         AndroidInjectionModule::class,
         DispatcherModule::class,
         ViewModelFactoryModule::class,
-        SourcesActivityModule::class],
+        SourcesActivityModule::class,
+        ArticlesActivityModule::class],
     dependencies = [CoreComponent::class]
 )
 interface AppComponent : AndroidInjector<HeadlinesApplication> {

@@ -1,5 +1,7 @@
 package com.example.headlines.features.articles.viewmodels
 
-class ArticlesDestinationViewModel {
+import androidx.lifecycle.ViewModel
+
+class ArticlesDestinationViewModel: ViewModel() {
 
 }

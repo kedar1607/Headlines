@@ -12,7 +12,7 @@ import dagger.android.ContributesAndroidInjector
 @Module
 abstract class SourcesActivityModule {
     /**
-     * This is scoped to a feature. This basically means that any dependency that's created for [SourcesActivityModule] will live only within [SourcesServiceModule].
+     * This is scoped to a feature. This basically means that any dependency that's created for [SourcesActivity] will live only within [SourcesActivity].
      */
     @FeatureScope
     @ContributesAndroidInjector(
