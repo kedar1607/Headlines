@@ -3,7 +3,7 @@ package com.example.headlines.di.app.modules.features.articles
 
 import com.example.headlines.BuildConfig
 import com.example.headlines.di.scopes.FeatureScope
-import com.example.headlines.services.ArticlesService
+import com.example.headlines.features.articles.services.ArticlesService
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit

@@ -1,7 +1,7 @@
 package com.example.headlines.di.app.modules.features.sources
 
 import com.example.headlines.di.scopes.FeatureScope
-import com.example.headlines.sources.activities.SourcesActivity
+import com.example.headlines.features.sources.activities.SourcesActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 

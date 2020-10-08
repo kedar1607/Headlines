@@ -5,7 +5,7 @@
 
     <fragment
         android:id="@+id/sourcesFragment"
-        android:name="com.example.headlines.sources.fragments.SourcesFragment"
+        android:name="com.example.headlines.features.sources.fragments.SourcesFragment"
         android:label="Sources" />
 
 </navigation>

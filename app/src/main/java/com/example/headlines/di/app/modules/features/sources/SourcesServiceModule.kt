@@ -2,7 +2,7 @@ package com.example.headlines.di.app.modules.features.sources
 
 import com.example.headlines.BuildConfig
 import com.example.headlines.di.scopes.FeatureScope
-import com.example.headlines.services.SourcesService
+import com.example.headlines.features.sources.services.SourcesService
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit

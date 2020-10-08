@@ -2,8 +2,8 @@ package com.example.headlines.di.app.modules.features.sources
 
 import androidx.lifecycle.ViewModel
 import com.example.headlines.di.scopes.ViewModelKey
-import com.example.headlines.sources.viewmodels.SourcesDestinationViewModel
-import com.example.headlines.sources.viewmodels.SourcesViewModel
+import com.example.headlines.features.sources.viewmodels.SourcesDestinationViewModel
+import com.example.headlines.features.sources.viewmodels.SourcesViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap

@@ -1,6 +1,6 @@
 package com.example.headlines.di.app.modules.features.sources
 
-import com.example.headlines.sources.fragments.SourcesFragment
+import com.example.headlines.features.sources.fragments.SourcesFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
