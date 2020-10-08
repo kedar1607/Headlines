@@ -2,6 +2,7 @@ package com.example.headlines.di.app.modules.features.articles
 
 import com.example.headlines.features.articles.fragments.ArticleDetailFragment
 import com.example.headlines.features.articles.fragments.ArticlesFragment
+import com.example.headlines.features.articles.fragments.InvalidSourceFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -17,4 +18,7 @@ abstract class ArticlesFragmentsModule {
 
     @ContributesAndroidInjector
     abstract fun contributeArticleDetailFragment(): ArticleDetailFragment
+
+    @ContributesAndroidInjector
+    abstract fun contributesInvalidSourceFragment(): InvalidSourceFragment
 }

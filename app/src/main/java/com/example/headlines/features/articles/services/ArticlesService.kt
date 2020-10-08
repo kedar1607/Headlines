@@ -22,7 +22,6 @@ interface ArticlesService {
      */
     @GET(".")
     suspend fun getArticlesBySource(
-        @Query("country") country: String = "us",
         @Query("sources") source: String,
         @Query("language") language: String = "en"
     ): APIResult<ArticlesResponse>

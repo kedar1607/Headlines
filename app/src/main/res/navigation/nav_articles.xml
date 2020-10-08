@@ -10,9 +10,16 @@
         <action
             android:id="@+id/action_articlesFragment_to_articleDetailFragment"
             app:destination="@id/articleDetailFragment" />
+        <action
+            android:id="@+id/action_articlesFragment_to_invalidSourceFragment"
+            app:destination="@id/invalidSourceFragment" />
     </fragment>
     <fragment
         android:id="@+id/articleDetailFragment"
         android:name="com.example.headlines.features.articles.fragments.ArticleDetailFragment"
         android:label="ArticleDetailFragment" />
+    <fragment
+        android:id="@+id/invalidSourceFragment"
+        android:name="com.example.headlines.features.articles.fragments.InvalidSourceFragment"
+        android:label="InvalidSourceFragment" />
 </navigation>

@@ -1,10 +1,9 @@
 package com.example.headlines.features.sources.activities
 
-import android.content.DialogInterface
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
-import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
@@ -13,8 +12,10 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import com.example.headlines.R
 import com.example.headlines.databinding.ActivitySourcesBinding
+import com.example.headlines.features.articles.activities.ArticlesActivity
 import com.example.headlines.features.sources.destinations.SourcesActivityDestination
 import com.example.headlines.features.sources.viewmodels.SourcesDestinationViewModel
+import com.example.headlines.utils.constants.SOURCE_ID
 import dagger.android.AndroidInjection
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
@@ -52,13 +53,13 @@ class SourcesActivity : AppCompatActivity(), HasAndroidInjector {
         setContentView(binding.root)
         setSupportActionBar(binding.toolbar)
         initNavigation()
-        viewModel.destinations.observe(this, Observer {
-            when(it){
+        viewModel.destinations.observe(this, Observer { sourceDestination ->
+            when(sourceDestination){
                 is SourcesActivityDestination.Articles -> {
-                    AlertDialog.Builder(this).setTitle("Work in progress")
-                        .setMessage("Articles activity is not built yet. But we know you want to see articles from ${it.sourceId}")
-                        .setPositiveButton("OK") { dialog: DialogInterface, _: Int -> dialog.dismiss() }
-                        .create().show()
+                    val intent = Intent(this, ArticlesActivity::class.java).also {
+                        it.putExtra(SOURCE_ID, sourceDestination.sourceId)
+                    }
+                    startActivity(intent)
                 }
             }
         })
