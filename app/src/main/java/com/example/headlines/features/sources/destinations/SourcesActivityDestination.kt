@@ -1,9 +1,9 @@
 package com.example.headlines.features.sources.destinations
 
 /**
- * This class encompasses all of the destinations from the [com.example.headlines.sources.activities.SourcesActivity]
+ * This class encompasses all of the destinations from the [com.example.headlines.features.sources.activities.SourcesActivity]
  * Note: Currently there's only one destination and that is [Articles].
- * We can add more destinations to this sealed class if there will be more than one destinations from [com.example.headlines.sources.activities.SourcesActivity].
+ * We can add more destinations to this sealed class if there will be more than one destinations from [com.example.headlines.features.sources.activities.SourcesActivity].
  */
 sealed class SourcesActivityDestination {
     /**

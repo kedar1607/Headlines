@@ -14,6 +14,10 @@ import com.example.headlines.features.articles.viewmodels.ArticlesDestinationVie
 import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
 
+/**
+ * This fragment is used to show the error screen with error message and the button to close the articles workflow
+ * started by [ArticlesFragment] in [com.example.headlines.features.articles.activities.ArticlesActivity]
+ */
 class InvalidSourceFragment: Fragment() {
 
     private var _binding: FragmentInvalidSourceBinding? = null
@@ -42,12 +46,19 @@ class InvalidSourceFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
         (activity as? AppCompatActivity)?.supportActionBar?.hide()
         binding.buttonBackToSources.setOnClickListener {
+            /**
+             * This triggers the active observer in in [com.example.headlines.features.articles.activities.ArticlesActivity]
+             * causing it to <code> finish() </code> the activity
+             */
             destinationViewModel.finish()
         }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
+        /**
+         * Avoid the memory leak
+         */
         _binding = null
     }
 

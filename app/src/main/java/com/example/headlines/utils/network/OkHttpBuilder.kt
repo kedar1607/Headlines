@@ -7,6 +7,9 @@ import javax.net.ssl.SSLContext
 import javax.net.ssl.TrustManager
 import javax.net.ssl.X509TrustManager
 
+/**
+ * This is more of a boiler plate to construct the [OkHttpClient] that is required by Retrofit builder.
+ */
 object OkHttpBuilder {
     fun getOkHttpClientBuilder(): OkHttpClient.Builder {
         // Create a trust manager that does not validate certificate chains

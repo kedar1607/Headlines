@@ -11,8 +11,8 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.headlines.databinding.FragmentSourcesBinding
-import com.example.headlines.features.sources.models.Source
 import com.example.headlines.features.sources.adapters.SourcesAdapter
+import com.example.headlines.features.sources.models.Source
 import com.example.headlines.features.sources.states.SourcesScreenState
 import com.example.headlines.features.sources.viewmodels.SourcesDestinationViewModel
 import com.example.headlines.features.sources.viewmodels.SourcesViewModel
@@ -85,6 +85,9 @@ class SourcesFragment: Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
+        /**
+         * To avoid mem. leaks
+         */
         _binding = null
     }
 }

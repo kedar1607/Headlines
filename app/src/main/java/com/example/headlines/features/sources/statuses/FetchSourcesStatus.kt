@@ -1,22 +1,22 @@
 package com.example.headlines.features.sources.statuses
 
-import com.example.headlines.network.APIResult
 import com.example.headlines.features.sources.models.SourcesResponse
+import com.example.headlines.network.APIResult
 
 /**
- * This class represents the status of the fetching sources from [com.example.headlines.sources.repositories.SourcesRepository].
- * Each of the subclasses (or objects) of this sealed class represents the state of the API call made in [com.example.headlines.services.SourcesService].
+ * This class represents the status of the fetching sources from [com.example.headlines.features.sources.repositories.SourcesRepository].
+ * Each of the subclasses (or objects) of this sealed class represents the state of the API call made in [com.example.headlines.features.sources.services.SourcesService].
  */
 sealed class FetchSourcesStatus {
 
     /**
-     * This indicates that the [com.example.headlines.services.SourcesService.getAllSources] was successful.
+     * This indicates that the [com.example.headlines.features.sources.services.SourcesService.getAllSources] was successful.
      * [sources] is the actual response that is received.
      */
     class Success(val sources: SourcesResponse): FetchSourcesStatus()
 
     /**
-     * This essentially means that the [com.example.headlines.services.SourcesService.getAllSources] failed and we update UI with
+     * This essentially means that the [com.example.headlines.features.sources.services.SourcesService.getAllSources] failed and we update UI with
      * the appropriate view.
      */
     object Failure: FetchSourcesStatus()

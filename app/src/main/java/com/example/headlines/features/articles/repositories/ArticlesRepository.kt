@@ -7,7 +7,8 @@ import com.example.headlines.features.articles.statuses.FetchArticlesStatus
 import javax.inject.Inject
 
 /**
- * This repository is responsible for making [fetchAllSources] call in order to fetch sources for populating them on the source fragment.
+ * This repository is responsible for making [fetchArticlesBySourceId] call in order to fetch articles
+ * for populating them in the [com.example.headlines.features.articles.fragments.ArticlesFragment]
  */
 class ArticlesRepository @Inject constructor(
     private val articlesService: ArticlesService

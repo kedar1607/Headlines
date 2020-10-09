@@ -16,7 +16,7 @@ class SourcesDestinationViewModel @Inject constructor(): ViewModel() {
     val destinations: LiveData<SourcesActivityDestination> = _destination
 
     /**
-     * As the name suggests navigates to the next articles screen which is not a part of [com.example.headlines.sources.activities.SourcesActivity].
+     * As the name suggests navigates to the next articles screen which is not a part of [com.example.headlines.features.sources.activities.SourcesActivity].
      * In this case, we give the control to the activity and let the activity decide what to do.
      */
     fun navigateToArticles(articleID: String?){

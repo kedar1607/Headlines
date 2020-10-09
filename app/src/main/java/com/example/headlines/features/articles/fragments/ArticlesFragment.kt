@@ -75,8 +75,14 @@ class ArticlesFragment: Fragment() {
                     populateArticles(articleScreenState.articles)
                     viewStateHelper.showContent()
                 }
-                // This logic can essentially be changed to show the error screen but at this time we can just consider the network error and invalid source id as one and the same
-                // for the purpose of this sample app.
+                /**
+                 * This logic can essentially be changed to show the error screen but at this time we can just consider the network error and invalid source id as one and the same
+                 * for the purpose of this sample app.
+                 * Ideally we can replace
+                 * <code> [destinationViewModel].invalidSourceId()] </code>
+                 * with
+                 * <code>[viewStateHelper].showError()</code>
+                 */
                 ArticleScreenState.ArticlesFetchFailed -> destinationViewModel.invalidSourceId()
             }
         })
@@ -96,6 +102,9 @@ class ArticlesFragment: Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
+        /**
+         * Avoid the memory leak
+         */
         _binding = null
     }
 }
