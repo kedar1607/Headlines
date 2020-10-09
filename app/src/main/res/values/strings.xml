@@ -5,4 +5,5 @@
     <string name="try_again">Try again</string>
     <string name="invalid_source_message">Selected source is invalid or does not have any articles published. Please select a different source or try again later.</string>
     <string name="back_to_sources">Back to Sources</string>
+    <string name="by">by</string>
 </resources>

@@ -35,6 +35,11 @@ class ArticlesDestinationViewModel @Inject constructor(): ViewModel(){
     fun navigateToDetails(article: Article) = _destination.postValue(ArticlesActivityDestination.Details(article))
 
     /**
+     * When user taps back or closes the details screen, we navigate them back to the articles list screen or the articles home screen.
+     */
+    fun backToArticlesList() = _destination.postValue(ArticlesActivityDestination.BackToArticles)
+
+    /**
      * Finishes the articles workflow by calling <code> finish() </code> on [com.example.headlines.features.articles.activities.ArticlesActivity]
      */
     fun finish() = _destination.postValue(ArticlesActivityDestination.Finish)

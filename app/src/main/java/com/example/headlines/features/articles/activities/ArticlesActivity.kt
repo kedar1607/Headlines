@@ -65,7 +65,8 @@ class ArticlesActivity : AppCompatActivity(), HasAndroidInjector {
                      */
                 }
                 ArticlesActivityDestination.InvalidSource -> navController.navigate(ArticlesFragmentDirections.actionArticlesFragmentToInvalidSourceFragment())
-                is ArticlesActivityDestination.Details -> TODO()
+                is ArticlesActivityDestination.Details -> navController.navigate(ArticlesFragmentDirections.actionArticlesFragmentToArticleDetailFragment(destination.article))
+                ArticlesActivityDestination.BackToArticles -> navController.popBackStack()
                 ArticlesActivityDestination.Finish -> finish()
             }
         })

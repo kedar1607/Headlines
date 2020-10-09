@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav_articles"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_articles"
     app:startDestination="@id/articlesFragment">
 
     <fragment
         android:id="@+id/articlesFragment"
         android:name="com.example.headlines.features.articles.fragments.ArticlesFragment"
-        android:label="ArticlesFragment" >
+        android:label="ArticlesFragment">
         <action
             android:id="@+id/action_articlesFragment_to_articleDetailFragment"
             app:destination="@id/articleDetailFragment" />
@@ -14,12 +15,19 @@
             android:id="@+id/action_articlesFragment_to_invalidSourceFragment"
             app:destination="@id/invalidSourceFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/articleDetailFragment"
         android:name="com.example.headlines.features.articles.fragments.ArticleDetailFragment"
-        android:label="ArticleDetailFragment" />
+        android:label="ArticleDetailFragment">
+        <argument
+            android:name="article"
+            app:argType="com.example.headlines.features.articles.models.Article" />
+    </fragment>
+
     <fragment
         android:id="@+id/invalidSourceFragment"
         android:name="com.example.headlines.features.articles.fragments.InvalidSourceFragment"
-        android:label="InvalidSourceFragment" />
+        android:label="InvalidSourceFragment"/>
+
 </navigation>

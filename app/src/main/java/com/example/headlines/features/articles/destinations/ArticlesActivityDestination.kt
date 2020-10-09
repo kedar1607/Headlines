@@ -29,6 +29,11 @@ sealed class ArticlesActivityDestination {
     class Details(val article:Article): ArticlesActivityDestination()
 
     /**
+     * This destination is used when we are navigating back to articles list from the article details view.
+     */
+    object BackToArticles: ArticlesActivityDestination()
+
+    /**
      * This finishes the entire workflow (activity) [com.example.headlines.features.articles.activities.ArticlesActivity]
      * In this specific implementation, users will be navigated back to to sources screen [com.example.headlines.features.sources.activities.SourcesActivity].
      */

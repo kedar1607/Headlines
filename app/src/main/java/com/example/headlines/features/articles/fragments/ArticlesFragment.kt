@@ -21,6 +21,14 @@ import com.example.headlines.utils.helpers.ViewStateHelper
 import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
 
+/**
+ * This fragment displays the list of [Article]s. This list is fetched by making a network call
+ * (please check [com.example.headlines.features.articles.services.ArticlesService] for more info on that)
+ * In order to make this api call, we need the source Id retrieved in previous screen [com.example.headlines.features.sources.fragments.SourcesFragment]
+ * This source Id can be passed in multiple ways. In this specific case, we are using the [ArticlesDestinationViewModel]'s one of the destination ([ArticlesDestinationViewModel.destinations])
+ * to retrieve the source ID (specifically [ArticlesActivityDestination.StartUp]).
+ * Another way of passing source if to [ArticlesFragment] is by making use of navArgs. More info on this in [ArticleDetailFragment].
+ */
 class ArticlesFragment: Fragment() {
 
     private var _binding: FragmentArticlesBinding? = null
@@ -97,7 +105,7 @@ class ArticlesFragment: Fragment() {
     }
 
     private fun onArticleClicked(article: Article){
-
+        destinationViewModel.navigateToDetails(article)
     }
 
     override fun onDestroyView() {

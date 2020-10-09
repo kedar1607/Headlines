@@ -5,6 +5,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.example.headlines.databinding.ItemArticleBinding
 import com.example.headlines.features.articles.models.Article
+import com.example.headlines.utils.extensions.getHTMLText
 import com.example.headlines.utils.extensions.share
 import com.example.headlines.utils.extensions.toDate
 
@@ -16,7 +17,7 @@ class ArticleItemViewHolder(private val binding: ItemArticleBinding) :
     RecyclerView.ViewHolder(binding.root) {
 
     fun bind(article: Article, onClick: ((Article) -> Unit)) {
-        binding.tvTitle.text = article.title
+        binding.tvTitle.text = article.title.getHTMLText()
         /**
          * Ideally, this should be done when constructing a model from the network response to avoid any extra computation on the main thread.
          */

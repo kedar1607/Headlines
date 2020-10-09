@@ -1,13 +1,16 @@
 package com.example.headlines.features.articles.models
 
+import android.os.Parcelable
 import com.example.headlines.features.sources.models.Source
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
+import kotlinx.android.parcel.Parcelize
 
 /**
  * This model class that represents an article on the articles screen.
  */
 @JsonClass(generateAdapter = true)
+@Parcelize
 data class Article(
     @Json(name = "author")
     val author: String? = null,
@@ -25,4 +28,4 @@ data class Article(
     val url: String,
     @Json(name = "urlToImage")
     val urlToImage: String? = null
-)
+) : Parcelable

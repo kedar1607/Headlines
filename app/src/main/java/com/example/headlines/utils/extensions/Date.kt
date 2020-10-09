@@ -1,13 +1,11 @@
 package com.example.headlines.utils.extensions
 
-import java.text.SimpleDateFormat
+import android.text.format.DateUtils
 import java.util.*
 
 /**
- * Converts the [Date] in to specified format with consideration of original timezone
+ * This function returns the given [Date] object in to time lapsed format.
+ * e.g. 5 minutes ago, 2 hours ago etc.
  */
-fun Date.formatTo(dateFormat: String, timeZone: TimeZone = TimeZone.getDefault()): String {
-    val formatter = SimpleDateFormat(dateFormat, Locale.getDefault())
-    formatter.timeZone = timeZone
-    return formatter.format(this)
-}
+fun Date.passedTime(): CharSequence =
+    DateUtils.getRelativeTimeSpanString(this.time)
