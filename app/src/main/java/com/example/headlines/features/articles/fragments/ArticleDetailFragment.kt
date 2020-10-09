@@ -70,21 +70,10 @@ class ArticleDetailFragment: Fragment() {
 
         binding.tvDateTime.text = article.publishedAt.toDate()
         binding.tvTitle.text = article.title.getHTMLText()
-        binding.tvDesc.setVisible((!article.description.isNullOrBlank()).also {
-            if(it){
-                binding.tvDesc.text = article.description?.getHTMLText()
-            }
-        })
-        binding.llAuthor.setVisible((!article.author.isNullOrBlank()).also {
-            if(it){
-                binding.tvAuthor.text = article.author
-            }
-        })
-        binding.tvContent.setVisible((!article.content.isNullOrBlank()).also {
-            if(it){
-                binding.tvContent.text = article.content?.getHTMLText()
-            }
-        })
+
+        binding.tvDesc.setTexViewVisibleWithHtmlLinks(article.description)
+        binding.tvAuthor.setTexViewVisibleWithHtmlLinks(article.author)
+        binding.tvContent.setTexViewVisibleWithHtmlLinks(article.content)
 
         binding.shareBtn.setOnClickListener { requireContext().share(article.url) }
         binding.linkBtn.setOnClickListener { requireContext().openUrlInBrowser(article.url) }
