@@ -28,7 +28,8 @@ class SourcesFragment: Fragment() {
     private var _binding: FragmentSourcesBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var viewStateHelper: ViewStateHelper
+    private var _viewStateHelper: ViewStateHelper? = null
+    private val viewStateHelper get() =  _viewStateHelper!!
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
@@ -48,7 +49,7 @@ class SourcesFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentSourcesBinding.inflate(inflater, container, false)
-        viewStateHelper = ViewStateHelper(binding.contentView, binding.errorView, binding.pbLoading)
+        _viewStateHelper = ViewStateHelper(binding.contentView, binding.errorView, binding.pbLoading)
         return binding.root
     }
 
@@ -89,5 +90,6 @@ class SourcesFragment: Fragment() {
          * To avoid mem. leaks
          */
         _binding = null
+        _viewStateHelper = null
     }
 }

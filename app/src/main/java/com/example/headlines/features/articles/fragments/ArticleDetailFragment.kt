@@ -35,7 +35,8 @@ class ArticleDetailFragment: Fragment() {
 
     private val destinationViewModel: ArticlesDestinationViewModel by activityViewModels { viewModelFactory }
 
-    private lateinit var viewStateHelper: ViewStateHelper
+    private var _viewStateHelper: ViewStateHelper? = null
+    private val viewStateHelper get() =  _viewStateHelper!!
 
     override fun onAttach(context: Context) {
         AndroidSupportInjection.inject(this)
@@ -54,7 +55,7 @@ class ArticleDetailFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         (activity as? AppCompatActivity)?.supportActionBar?.hide()
-        viewStateHelper = ViewStateHelper(binding.contentView, binding.errorView, binding.pbLoading)
+        _viewStateHelper = ViewStateHelper(binding.contentView, binding.errorView, binding.pbLoading)
         binding.btnCancel.setOnClickListener { destinationViewModel.backToArticlesList() }
         viewStateHelper.showLoading()
         populateArticleData(navArgs<ArticleDetailFragmentArgs>().value.article)
@@ -85,5 +86,6 @@ class ArticleDetailFragment: Fragment() {
          * Avoid the memory leak
          */
         _binding = null
+        _viewStateHelper = null
     }
 }
