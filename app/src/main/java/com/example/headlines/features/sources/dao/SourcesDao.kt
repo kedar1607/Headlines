@@ -17,4 +17,7 @@ interface SourcesDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(sources: List<Source>)
+
+    @Query("SELECT * FROM sources")
+    fun deleteLast(): LiveData<List<Source>>
 }

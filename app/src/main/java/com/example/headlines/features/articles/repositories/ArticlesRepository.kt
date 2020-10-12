@@ -26,6 +26,14 @@ class ArticlesRepository @Inject constructor(
              * view model is already listening through the [localSource], hence it will get an update when insert is happening.
              */
             if (it is FetchArticlesStatus.Success) {
+                /**
+                 * This is an eviction policy so that we do not have more than 20 elements in the list
+                 * at one time. The number is set to 10.
+                 */
+                val size  = appDatabase.articlesDao().getRowCount(sourceId)
+                if(size > 10){
+                    appDatabase.articlesDao().deleteLast()
+                }
                 appDatabase.articlesDao().insertAll(it.articles.articles)
             }else{
                 dataSource.postValue(it)
