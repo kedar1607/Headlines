@@ -43,15 +43,20 @@ class SourcesViewModel @Inject constructor(private val repository: SourcesReposi
 
         _sourceScreenState.addSource(repository.localSource()) {
             when {
-                it.isNullOrEmpty() -> {
-                    /**
-                     * We can do this here or we can give full control to the fragment in terms of when to make the [repository] call.
-                     */
-                    fetchSources()
+                /**
+                 * Local source can only lead to success as we currently do not save the state of the api call in the database.
+                 * However, that is something really interesting to explore and would love help from the team doing that.
+                 */
+                !it.isNullOrEmpty() -> {
+                    _sourceScreenState.postValue(SourcesScreenState.SourcesFetched(it))
                 }
-                else -> _sourceScreenState.postValue(SourcesScreenState.SourcesFetched(it))
             }
         }
+
+        /**
+         * We can do this here or we can give full control to the fragment in terms of when to make the [repository] call.
+         */
+        fetchSources()
     }
 
     /**
