@@ -63,7 +63,7 @@ class SourcesViewModel @Inject constructor(private val repository: SourcesReposi
      * [dispatcherProvider] is used to launch the coroutine in that specific [kotlinx.coroutines.CoroutineDispatcher].
      * Please read [com.example.headlines.utils.coroutines.DispatcherProviderImpl] for more details on how these dispatchers are provided.
      */
-    private fun fetchSources() {
+    fun fetchSources() {
         viewModelScope.launch(dispatcherProvider.io) {
             _sourceScreenState.postValue(SourcesScreenState.Loading)
             repository.fetchAllSources()
