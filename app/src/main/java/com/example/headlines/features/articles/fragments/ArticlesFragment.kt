@@ -100,7 +100,7 @@ class ArticlesFragment: Fragment() {
     private fun observeStartUpState() {
         destinationViewModel.destinations.observe(viewLifecycleOwner, Observer {
             when(it){
-                is ArticlesActivityDestination.StartUp -> articlesViewModel.fetchArticlesBySourceId(it.sourceId)
+                is ArticlesActivityDestination.StartUp -> articlesViewModel.loadArticlesBySourceId(it.sourceId)
             }
         })
     }

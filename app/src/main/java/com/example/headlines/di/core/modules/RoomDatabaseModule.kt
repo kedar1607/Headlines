@@ -20,6 +20,6 @@ class RoomDatabaseModule {
         return Room.databaseBuilder(
             applicationContext,
             AppDatabase::class.java, "headlines-db"
-        ).build()
+        ).fallbackToDestructiveMigration().build()
     }
 }

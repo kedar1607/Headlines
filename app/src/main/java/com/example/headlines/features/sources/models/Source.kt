@@ -22,7 +22,7 @@ data class Source(
     @ColumnInfo(name = "country")
     val country: String? = null,
     @Json(name = "description")
-    @ColumnInfo(name = "description")
+    @ColumnInfo(name = "source_description")
     val description: String? = null,
     @Json(name = "id")
     @ColumnInfo(name = "id")
@@ -34,6 +34,22 @@ data class Source(
     @ColumnInfo(name = "name")
     val name: String,
     @Json(name = "url")
-    @ColumnInfo(name = "url")
+    @ColumnInfo(name = "source_url")
     val url: String? = null
-) : Parcelable
+) : Parcelable{
+
+    override fun equals(other: Any?): Boolean {
+       return if(other as? Source == null){
+           false
+       } else{
+           other.id == id
+       }
+    }
+
+    override fun hashCode(): Int {
+        var result = id.hashCode()
+        result = 31 * result + name.hashCode()
+        return result
+    }
+
+}

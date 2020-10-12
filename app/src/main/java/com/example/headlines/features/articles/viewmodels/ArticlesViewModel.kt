@@ -33,13 +33,34 @@ class ArticlesViewModel @Inject constructor(private val repository: ArticlesRepo
         _articlesScreenState.postValue(ArticleScreenState.Landing)
         _articlesScreenState.addSource(repository.dataSource){
             when(it){
-                is FetchArticlesStatus.Success -> _articlesScreenState.postValue(ArticleScreenState.ArticlesFetched(it.articles.articles))
+                /**
+                 * We only need to know if the network call failed.
+                 * Success is handled from the local data source as the local data source is the single version of the truth every single time.
+                 */
                 FetchArticlesStatus.Failure -> _articlesScreenState.postValue(ArticleScreenState.ArticlesFetchFailed)
             }
         }
     }
 
-    fun fetchArticlesBySourceId(sourceId: String){
+    private fun loadArticlesFromDbBySourceId(sourceId: String) {
+        _articlesScreenState.addSource(repository.localSource(sourceId)) {
+            when {
+                /**
+                 * Local source can only lead to success as we currently do not save the state of the api call in the database.
+                 * However, that is something really interesting to explore and would love help from the team doing that.
+                 */
+                !it.isNullOrEmpty() -> {
+                    _articlesScreenState.postValue(ArticleScreenState.ArticlesFetched(it))
+                }
+            }
+        }
+    }
+
+    fun loadArticlesBySourceId(sourceId: String){
+        /**
+         *  Load from the local source first and then make the remote api call to update the local source.
+         */
+        loadArticlesFromDbBySourceId(sourceId)
         /**
          * Set to loading as soon as the call is made.
          */
