@@ -18,6 +18,8 @@ sealed class FetchSourcesStatus {
     /**
      * This essentially means that the [com.example.headlines.features.sources.services.SourcesService.getAllSources] failed and we update UI with
      * the appropriate view.
+     * Note : We can technically check here if it's a connection problem and determine whether to show the local data (from room DB) in that specific case.
+     * But for the purpose of this demo, I decided to keep it simple.
      */
     object Failure: FetchSourcesStatus()
 

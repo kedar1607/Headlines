@@ -1,11 +1,9 @@
 package com.example.headlines.di.app.modules.features.articles
 
-
 import com.example.headlines.BuildConfig
 import com.example.headlines.di.app.modules.features.sources.SourcesActivityModule
 import com.example.headlines.di.scopes.FeatureScope
 import com.example.headlines.features.articles.services.ArticlesService
-import com.example.headlines.features.sources.services.SourcesService
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit

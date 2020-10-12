@@ -19,7 +19,7 @@ class SourcesDestinationViewModel @Inject constructor(): ViewModel() {
      * As the name suggests navigates to the next articles screen which is not a part of [com.example.headlines.features.sources.activities.SourcesActivity].
      * In this case, we give the control to the activity and let the activity decide what to do.
      */
-    fun navigateToArticles(articleID: String?){
-        _destination.postValue(SourcesActivityDestination.Articles(articleID))
+    fun navigateToArticles(sourceId: String){
+        _destination.postValue(SourcesActivityDestination.Articles(sourceId))
     }
 }
