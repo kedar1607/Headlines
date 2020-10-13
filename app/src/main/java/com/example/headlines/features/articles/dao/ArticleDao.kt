@@ -21,6 +21,6 @@ interface ArticleDao {
     @Query("SELECT COUNT() FROM articles where id like :sourceId")
     fun getRowCount(sourceId: String): Int
 
-    @Query("DELETE FROM articles where article_url NOT IN (SELECT article_url from articles ORDER BY publishedAt DESC LIMIT 10)")
-    fun deleteLast()
+    @Query("DELETE FROM articles where article_url NOT IN (SELECT article_url from articles ORDER BY publishedAt DESC LIMIT 10) and id like :sourceId")
+    fun deleteLast(sourceId: String)
 }

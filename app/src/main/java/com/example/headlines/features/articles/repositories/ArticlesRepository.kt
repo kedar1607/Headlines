@@ -32,7 +32,7 @@ class ArticlesRepository @Inject constructor(
                  */
                 val size  = appDatabase.articlesDao().getRowCount(sourceId)
                 if(size > 10){
-                    appDatabase.articlesDao().deleteLast()
+                    appDatabase.articlesDao().deleteLast(sourceId)
                 }
                 appDatabase.articlesDao().insertAll(it.articles.articles)
             }else{
